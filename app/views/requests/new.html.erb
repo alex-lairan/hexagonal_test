@@ -1,0 +1,27 @@
+<h1>Hexagonal Freelancing</h1>
+<h2>Test Alexandre Lairan</h2>
+
+<%= form_with model: @request do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <br>
+
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %>
+
+  <br>
+
+  <%= f.label :biography %>
+  <%= f.text_area :biography %>
+
+  <br>
+  <br>
+
+  <%= f.submit 'Create' %>
+<% end %>

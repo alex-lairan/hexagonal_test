@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'requests#new'
+
+  resources 'requests', only: %i[new create] do
+    member do
+      get 'confirm'
+      get 'reconfirm'
+    end
+  end
 end
