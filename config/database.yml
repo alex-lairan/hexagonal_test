@@ -9,8 +9,6 @@ default: &default
   timeout: 5000
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("HEXAGONAL_PSQL_USER") { "postgres" } %>
-  password: <%= ENV.fetch("HEXAGONAL_PSQL_PASSWORD") { "" } %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -18,11 +16,14 @@ default: &default
 test:
   <<: *default
   database: hexagonal_test
+  username: <%= ENV.fetch("HEXAGONAL_PSQL_USER") { "postgres" } %>
+  password: <%= ENV.fetch("HEXAGONAL_PSQL_PASSWORD") { "" } %>
 
 production:
   <<: *default
-  database: hexagonal_production
 
 development:
   <<: *default
   database: hexagonal_development
+  username: <%= ENV.fetch("HEXAGONAL_PSQL_USER") { "postgres" } %>
+  password: <%= ENV.fetch("HEXAGONAL_PSQL_PASSWORD") { "" } %>
