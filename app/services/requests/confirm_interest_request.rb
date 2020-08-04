@@ -13,7 +13,6 @@ module Requests
 
     def call(params)
       request = yield search_request(params)
-      yield ensure_unique_email(request)
       request = yield confirm_interest(request)
 
       Success(request)
@@ -27,14 +26,6 @@ module Requests
       Success(request)
     rescue ActiveRecord::RecordNotFound
       Failure(record: ['is not found'])
-    end
-
-    def ensure_unique_email(request)
-      if @request_model.for_email(request.email).exists?
-        Failure(email: ['is already taken'])
-      else
-        Success(request)
-      end
     end
 
     def confirm_interest(request)
